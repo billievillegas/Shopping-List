@@ -14,14 +14,18 @@ function addListElement() {
   inputItems.focus();
 }
 
-button.addEventListener("click", function () {
-  if (inputLength > 0) {
+function addListAfterClick() {
+  if (inputLength() > 0) {
     addListElement();
   }
-});
+}
 
-button.addEventListener("keypress", function(event) {
-  if (inputLength > 0 && event.which === 13) {
+function addListAfterKeyPress(event) {
+  if (inputLength() > 0 && event.keyCode === 13) {
     addListElement();
   }
-});
+}
+
+button.addEventListener("click", addListAfterClick);
+
+button.addEventListener("keypress", addListAfterKeyPress);
